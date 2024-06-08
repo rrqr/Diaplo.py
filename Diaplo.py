@@ -1,3 +1,4 @@
+import argparse
 import requests
 import concurrent.futures
 from termcolor import colored
@@ -23,6 +24,11 @@ def brute_force(base_url, wordlist_file):
         futures = [executor.submit(check_url, base_url, word) for word in words]
         concurrent.futures.wait(futures)
 
-base_url = 'https://alfondoq.ir/'  # ضع هنا عنوان الموقع المستهدف
-wordlist_file = 'wordlist.txt'    # ضع هنا مسار قائمة الكلمات
+parser = argparse.ArgumentParser(description='Brute Force URL Checker')
+parser.add_argument('--url', required=True, help='Target URL')
+parser.add_argument('--wordlist', required=True, help='Path to wordlist file')
+args = parser.parse_args()
+
+base_url = args.url
+wordlist_file = args.wordlist
 brute_force(base_url, wordlist_file)
