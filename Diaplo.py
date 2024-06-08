@@ -23,7 +23,6 @@ def brute_force(base_url, wordlist_file):
         futures = [executor.submit(check_url, base_url, word) for word in words]
         concurrent.futures.wait(futures)
 
-if name == "__main__":
-    base_url = 'https://glob-care.com/'  # ضع هنا عنوان الموقع المستهدف
-    wordlist_file = 'wordlist.txt'    # ضع هنا مسار قائمة الكلمات
-    brute_force(base_url, wordlist_file)
+base_url = 'https://alfondoq.ir/'  # ضع هنا عنوان الموقع المستهدف
+wordlist_file = 'wordlist.txt'    # ضع هنا مسار قائمة الكلمات
+brute_force(base_url, wordlist_file)
